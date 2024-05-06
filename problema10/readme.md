@@ -1,0 +1,1 @@
+# 10. Realice un programa en PHP que imprima “Hola mundo”

@@ -1,0 +1,21 @@
+h1 {
+  color: Red;
+}
+#cabecera {
+  background-color: #40c4ff;
+  width: 100%;
+  min-height: 100px;
+  float: left;
+}
+.manu {
+  background-color: #81d4fa;
+  width: 15%;
+  min-height: 400px;
+  float: left;
+}
+#cuerpo {
+  background-color: #26c6da;
+  width: 85%;
+  min-height: 400px;
+  float: left;
+}

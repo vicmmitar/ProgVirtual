@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <title>Añadir persona</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Registro de personas</h1>
+        <hr>
+        <form action="../controladores/añadirpersona.php" method="post">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <label>Nombre:</label>
+                    <input type="text" name="nombre" class="form-control mb-3">
+                    <label>Apellido:</label>
+                    <input type="text" name="apellido" class="form-control mb-3">
+                    <label>CI:</label>
+                    <input type="text" name="ci" class="form-control mb-3">
+                    <input type="submit" class="btn btn-dark" value="Agregar Persona">
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="../js/bootstrap.bundle.js"></script>
+</body>
+</html>

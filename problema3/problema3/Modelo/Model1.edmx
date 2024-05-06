@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bdvictorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cuenta_bancaria">
+          <Key>
+            <PropertyRef Name="id_cuenta_bancaria" />
+          </Key>
+          <Property Name="id_cuenta_bancaria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo_cuenta" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="saldo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="departamento" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_persona" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="id_persona" />
+          </Key>
+          <Property Name="id_persona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ci" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="transaccion_bancaria">
+          <Key>
+            <PropertyRef Name="id_transaccion_bancaria" />
+          </Key>
+          <Property Name="id_transaccion_bancaria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="monto" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="origen" Type="int" Nullable="false" />
+          <Property Name="destino" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_cuenta_bancaria_persona">
+          <End Role="persona" Type="Self.persona" Multiplicity="1" />
+          <End Role="cuenta_bancaria" Type="Self.cuenta_bancaria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="id_persona" />
+            </Principal>
+            <Dependent Role="cuenta_bancaria">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transaccion_bancaria_cuenta_bancaria">
+          <End Role="cuenta_bancaria" Type="Self.cuenta_bancaria" Multiplicity="1" />
+          <End Role="transaccion_bancaria" Type="Self.transaccion_bancaria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cuenta_bancaria">
+              <PropertyRef Name="id_cuenta_bancaria" />
+            </Principal>
+            <Dependent Role="transaccion_bancaria">
+              <PropertyRef Name="origen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transaccion_bancaria_cuenta_bancaria1">
+          <End Role="cuenta_bancaria" Type="Self.cuenta_bancaria" Multiplicity="1" />
+          <End Role="transaccion_bancaria" Type="Self.transaccion_bancaria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cuenta_bancaria">
+              <PropertyRef Name="id_cuenta_bancaria" />
+            </Principal>
+            <Dependent Role="transaccion_bancaria">
+              <PropertyRef Name="destino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bdvictorModelStoreContainer">
+          <EntitySet Name="cuenta_bancaria" EntityType="Self.cuenta_bancaria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="transaccion_bancaria" EntityType="Self.transaccion_bancaria" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_cuenta_bancaria_persona" Association="Self.FK_cuenta_bancaria_persona">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="cuenta_bancaria" EntitySet="cuenta_bancaria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transaccion_bancaria_cuenta_bancaria" Association="Self.FK_transaccion_bancaria_cuenta_bancaria">
+            <End Role="cuenta_bancaria" EntitySet="cuenta_bancaria" />
+            <End Role="transaccion_bancaria" EntitySet="transaccion_bancaria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transaccion_bancaria_cuenta_bancaria1" Association="Self.FK_transaccion_bancaria_cuenta_bancaria1">
+            <End Role="cuenta_bancaria" EntitySet="cuenta_bancaria" />
+            <End Role="transaccion_bancaria" EntitySet="transaccion_bancaria" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bdvictorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cuenta_bancaria">
+          <Key>
+            <PropertyRef Name="id_cuenta_bancaria" />
+          </Key>
+          <Property Name="id_cuenta_bancaria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo_cuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="saldo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_persona" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="persona" Relationship="Self.FK_cuenta_bancaria_persona" FromRole="cuenta_bancaria" ToRole="persona" />
+          <NavigationProperty Name="transaccion_bancaria" Relationship="Self.FK_transaccion_bancaria_cuenta_bancaria" FromRole="cuenta_bancaria" ToRole="transaccion_bancaria" />
+          <NavigationProperty Name="transaccion_bancaria1" Relationship="Self.FK_transaccion_bancaria_cuenta_bancaria1" FromRole="cuenta_bancaria" ToRole="transaccion_bancaria" />
+        </EntityType>
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="id_persona" />
+          </Key>
+          <Property Name="id_persona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ci" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="cuenta_bancaria" Relationship="Self.FK_cuenta_bancaria_persona" FromRole="persona" ToRole="cuenta_bancaria" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="transaccion_bancaria">
+          <Key>
+            <PropertyRef Name="id_transaccion_bancaria" />
+          </Key>
+          <Property Name="id_transaccion_bancaria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="monto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="origen" Type="Int32" Nullable="false" />
+          <Property Name="destino" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cuenta_bancaria" Relationship="Self.FK_transaccion_bancaria_cuenta_bancaria" FromRole="transaccion_bancaria" ToRole="cuenta_bancaria" />
+          <NavigationProperty Name="cuenta_bancaria1" Relationship="Self.FK_transaccion_bancaria_cuenta_bancaria1" FromRole="transaccion_bancaria" ToRole="cuenta_bancaria" />
+        </EntityType>
+        <Association Name="FK_cuenta_bancaria_persona">
+          <End Role="persona" Type="Self.persona" Multiplicity="1" />
+          <End Role="cuenta_bancaria" Type="Self.cuenta_bancaria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="id_persona" />
+            </Principal>
+            <Dependent Role="cuenta_bancaria">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transaccion_bancaria_cuenta_bancaria">
+          <End Role="cuenta_bancaria" Type="Self.cuenta_bancaria" Multiplicity="1" />
+          <End Role="transaccion_bancaria" Type="Self.transaccion_bancaria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cuenta_bancaria">
+              <PropertyRef Name="id_cuenta_bancaria" />
+            </Principal>
+            <Dependent Role="transaccion_bancaria">
+              <PropertyRef Name="origen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transaccion_bancaria_cuenta_bancaria1">
+          <End Role="cuenta_bancaria" Type="Self.cuenta_bancaria" Multiplicity="1" />
+          <End Role="transaccion_bancaria" Type="Self.transaccion_bancaria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cuenta_bancaria">
+              <PropertyRef Name="id_cuenta_bancaria" />
+            </Principal>
+            <Dependent Role="transaccion_bancaria">
+              <PropertyRef Name="destino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bdvictorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cuenta_bancaria" EntityType="Self.cuenta_bancaria" />
+          <EntitySet Name="persona" EntityType="Self.persona" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="transaccion_bancaria" EntityType="Self.transaccion_bancaria" />
+          <AssociationSet Name="FK_cuenta_bancaria_persona" Association="Self.FK_cuenta_bancaria_persona">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="cuenta_bancaria" EntitySet="cuenta_bancaria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transaccion_bancaria_cuenta_bancaria" Association="Self.FK_transaccion_bancaria_cuenta_bancaria">
+            <End Role="cuenta_bancaria" EntitySet="cuenta_bancaria" />
+            <End Role="transaccion_bancaria" EntitySet="transaccion_bancaria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transaccion_bancaria_cuenta_bancaria1" Association="Self.FK_transaccion_bancaria_cuenta_bancaria1">
+            <End Role="cuenta_bancaria" EntitySet="cuenta_bancaria" />
+            <End Role="transaccion_bancaria" EntitySet="transaccion_bancaria" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bdvictorModelStoreContainer" CdmEntityContainer="bdvictorEntities">
+          <EntitySetMapping Name="cuenta_bancaria">
+            <EntityTypeMapping TypeName="bdvictorModel.cuenta_bancaria">
+              <MappingFragment StoreEntitySet="cuenta_bancaria">
+                <ScalarProperty Name="id_cuenta_bancaria" ColumnName="id_cuenta_bancaria" />
+                <ScalarProperty Name="tipo_cuenta" ColumnName="tipo_cuenta" />
+                <ScalarProperty Name="saldo" ColumnName="saldo" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="persona">
+            <EntityTypeMapping TypeName="bdvictorModel.persona">
+              <MappingFragment StoreEntitySet="persona">
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="ci" ColumnName="ci" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="bdvictorModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transaccion_bancaria">
+            <EntityTypeMapping TypeName="bdvictorModel.transaccion_bancaria">
+              <MappingFragment StoreEntitySet="transaccion_bancaria">
+                <ScalarProperty Name="id_transaccion_bancaria" ColumnName="id_transaccion_bancaria" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="origen" ColumnName="origen" />
+                <ScalarProperty Name="destino" ColumnName="destino" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

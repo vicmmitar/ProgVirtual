@@ -1,0 +1,9 @@
+C:\Program Files\xampp\htdocs\ProgVirtual\problema9v1\bin\Debug\problema9v1.exe.config
+C:\Program Files\xampp\htdocs\ProgVirtual\problema9v1\bin\Debug\problema9v1.exe
+C:\Program Files\xampp\htdocs\ProgVirtual\problema9v1\bin\Debug\problema9v1.pdb
+C:\Program Files\xampp\htdocs\ProgVirtual\problema9v1\obj\Debug\problema9v1.csprojResolveAssemblyReference.cache
+C:\Program Files\xampp\htdocs\ProgVirtual\problema9v1\obj\Debug\problema9v1.Form1.resources
+C:\Program Files\xampp\htdocs\ProgVirtual\problema9v1\obj\Debug\problema9v1.Properties.Resources.resources
+C:\Program Files\xampp\htdocs\ProgVirtual\problema9v1\obj\Debug\problema9v1.csproj.GenerateResource.Cache
+C:\Program Files\xampp\htdocs\ProgVirtual\problema9v1\obj\Debug\problema9v1.exe
+C:\Program Files\xampp\htdocs\ProgVirtual\problema9v1\obj\Debug\problema9v1.pdb
