@@ -10,12 +10,12 @@ h1 {
 .manu {
   background-color: #81d4fa;
   width: 15%;
-  min-height: 400px;
+  min-height: 800px;
   float: left;
 }
 #cuerpo {
   background-color: #26c6da;
   width: 85%;
-  min-height: 400px;
+  min-height: 800px;
   float: left;
 }
