@@ -1,1 +1,2 @@
-# 2. Realice un ABC en PHP de las personas a cuentas bancarias, debe incluir la selección de la cuenta que la persona desee.
+# **Problema 7**
+En el rol director bancario, permita visualizar los montos existentes por departamento(agregados), dando la vuelta al resultado (CASE-WHEN)
