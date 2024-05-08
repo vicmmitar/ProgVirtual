@@ -1,2 +1,2 @@
-# **Problema 3**
+# **Problema 2**
 Realice un ABC en PHP de las personas a cuentas bancarias, debe incluir la selección de la cuenta que la persona desee.
